@@ -47,7 +47,7 @@ export async function CategoryArchive({ slug, page = 1 }: Props) {
           <h1>{config.title}</h1>
         </div>
       </div>
-      <section style={{ padding: "3rem 0 4rem" }}>
+      <section className="page-section">
         <div className="container">
           <PostListing
             basePath={config.path}

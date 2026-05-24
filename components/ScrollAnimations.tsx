@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const SECTION_SELECTOR =
-  "#main-content > section:not(.hero-wrap), #main-content .archive-header, #main-content article, #main-content .legal-page, #main-content .contact-section, #main-content .estimate-section";
+  "#main-content > section:not(.hero-wrap), #main-content .mri-section, #main-content .mri-hero, #main-content .mri-zip-section, #main-content .mri-pain-row, #main-content .archive-header, #main-content article, #main-content .legal-page, #main-content .contact-section, #main-content .estimate-section";
 
 const STAGGER_SELECTOR =
   "#main-content .post-card, #main-content .coverage-list li, #main-content .testimonials-grid blockquote";
@@ -16,7 +16,18 @@ const VARIANT_MAP: Record<string, string> = {
   ".why-image": "scroll-animate-right",
 };
 
-const SKIP_SECTION_CLASSES = ["covered", "why-section", "testimonials", "expert-tips"];
+const SKIP_SECTION_CLASSES = [
+  "covered",
+  "why-section",
+  "testimonials",
+  "expert-tips",
+  "mri-section",
+  "mri-hero",
+  "mri-pain-mosaic",
+  "mri-pain-section",
+  "mri-zip-section",
+  "mri-bottom-cta",
+];
 
 function setupScrollAnimations() {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

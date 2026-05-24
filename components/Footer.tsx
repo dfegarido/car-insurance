@@ -1,5 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  SITE_BRAND_NAME,
+  SITE_EMAIL,
+  SITE_LOGO,
+  SITE_LOGO_ALT,
+} from "@/lib/site";
 import "./footer.css";
 
 const QUICK_LINKS = [
@@ -10,6 +16,8 @@ const QUICK_LINKS = [
   { href: "/contact-us", label: "Contact Us" },
 ];
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -18,10 +26,10 @@ export function Footer() {
           <div className="footer-col footer-col-logo">
             <Link href="/" className="footer-logo">
               <Image
-                src="/images/logo-2.png"
-                alt="The Insurance Provider"
-                width={180}
-                height={62}
+                src={SITE_LOGO}
+                alt={SITE_LOGO_ALT}
+                width={200}
+                height={69}
               />
             </Link>
           </div>
@@ -30,9 +38,7 @@ export function Footer() {
             <h2>Contact Info</h2>
             <ul className="footer-list">
               <li>
-                <a href="mailto:info@theinsuranceprovider.com">
-                  info@theinsuranceprovider.com
-                </a>
+                <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
               </li>
             </ul>
           </div>
@@ -61,10 +67,10 @@ export function Footer() {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <p className="footer-copyright">
-            Copyright © 2026 The Insurance Provider
+            Copyright © {CURRENT_YEAR} {SITE_BRAND_NAME}
           </p>
           <div className="footer-bottom-right">
-            <p className="footer-powered">Powered by The Insurance Provider</p>
+            <p className="footer-powered">Powered by {SITE_BRAND_NAME}</p>
             <p className="footer-legal">
               <Link href="/privacy-policy">Privacy Policy</Link>
               <span className="footer-legal-sep"> | </span>

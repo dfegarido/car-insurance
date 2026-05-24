@@ -1,0 +1,195 @@
+/**
+ * Shared typography — Mulish only, matches The Insurance Provider pages.
+ */
+
+#main-content {
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-navy);
+  background: var(--color-white);
+}
+
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4,
+#main-content h5,
+#main-content h6 {
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+#main-content p,
+#main-content li {
+  font-weight: 300;
+  color: var(--color-muted);
+}
+
+#main-content strong {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+#main-content a:not(.btn):not(.mri-btn):not(.post-card-title a) {
+  color: var(--color-link);
+}
+
+#main-content a:not(.btn):not(.mri-btn):hover {
+  color: var(--color-link-hover);
+}
+
+/* Home hero — text on banner image only */
+#main-content .hero-content h1 {
+  color: #ffffff;
+}
+
+/* Auto insurance hero — beat #main-content h1/h4 navy defaults */
+#main-content .mri-hero h1 {
+  color: #ffffff;
+}
+
+#main-content .mri-hero .mri-eyebrow {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.archive-header {
+  padding: 3rem 0 2rem;
+  background: var(--color-bg-light);
+}
+
+.archive-header h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.post-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.post-card-date {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.post-card-excerpt {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.pagination a,
+.pagination span {
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+}
+
+.wp-content {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.wp-content h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.wp-content h2 {
+  font-size: 1.5rem;
+}
+
+.wp-content h3 {
+  font-size: 1.125rem;
+}
+
+.wp-content p,
+.wp-content li {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.legal-page h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.contact-grid h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.contact-grid > div > p {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.contact-block h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.contact-block p,
+.contact-block a {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.estimate-section h2 {
+  color: #ffffff;
+  font-size: 1.75rem;
+}
+
+.estimate-section p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-muted-on-dark);
+}
+
+.contact-page-form label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+.contact-page-form input,
+.contact-page-form textarea {
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.article-header time {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.article-header h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0.75rem 0 0;
+}
+
+.article-body .wp-content {
+  font-size: 16px;
+  font-weight: 300;
+}

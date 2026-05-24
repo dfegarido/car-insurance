@@ -15,7 +15,7 @@ export default function ContactUsPage() {
         </div>
       </div>
 
-      <section className="contact-section">
+      <section className="page-section contact-section">
         <div className="container contact-grid">
           <div>
             <h2>Get in Touch with Us</h2>

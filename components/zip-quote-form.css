@@ -1,0 +1,111 @@
+/* ZIP quote forms (auto insurance landing) */
+
+.zip-quote-form--mri {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.zip-quote-form--mri.zip-quote-form--stacked {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.zip-quote-form--mri.zip-quote-form--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+
+#main-content .mri-page .zip-quote-form--mri .zip-quote-input {
+  flex: 0 0 auto;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 12px 14px;
+  border: 1px solid #c5c8d4;
+  border-radius: 4px;
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--color-navy);
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 4, 34, 0.06);
+  -webkit-text-fill-color: var(--color-navy);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+#main-content .mri-page .zip-quote-form--mri .zip-quote-input::placeholder {
+  color: #6b6e82;
+  opacity: 1;
+  font-weight: 400;
+}
+
+#main-content .mri-page .zip-quote-form--mri .zip-quote-input:hover {
+  border-color: #9aa0b5;
+}
+
+#main-content .mri-page .zip-quote-form--mri .zip-quote-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 90, 159, 0.2);
+}
+
+#main-content .mri-page .zip-quote-form--mri .zip-quote-input[aria-invalid="true"] {
+  border-color: #c0392b;
+}
+
+.zip-quote-form--mri.zip-quote-form--stacked .zip-quote-input {
+  flex: none;
+}
+
+.zip-quote-form--mri.zip-quote-form--stacked .zip-quote-btn {
+  width: 100%;
+  min-height: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.zip-quote-form--mri.zip-quote-form--inline {
+  align-items: center;
+}
+
+.zip-quote-form--mri.zip-quote-form--inline .zip-quote-input {
+  flex: 1 1 220px;
+  width: auto;
+  max-width: 360px;
+}
+
+.zip-quote-form--mri .zip-quote-btn {
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 4px;
+  line-height: 1.25;
+}
+
+.zip-quote-form--mri .zip-quote-error {
+  flex: 1 1 100%;
+  color: #c0392b;
+  text-align: left;
+  margin: 0.5rem 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 544px) {
+  .zip-quote-form--mri.zip-quote-form--inline {
+    flex-direction: column;
+  }
+
+  .zip-quote-form--mri.zip-quote-form--inline .zip-quote-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,542 @@
+/* Auto insurance landing — light sections matching rest of site */
+
+.mri-page-full {
+  display: block;
+}
+
+.mri-page {
+  --mri-max: var(--max-width);
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  color: var(--color-navy);
+  background: var(--color-white);
+}
+
+.mri-wrap {
+  width: 100%;
+  max-width: var(--mri-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero — full-bleed image, white text */
+.mri-hero {
+  position: relative;
+  min-height: min(85vh, 640px);
+  display: flex;
+  align-items: center;
+  background-color: var(--color-navy);
+  background-image: url("/images/mri/Container-5.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mri-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 4, 34, 0.65) 0%,
+    rgba(0, 4, 34, 0.35) 55%,
+    rgba(0, 4, 34, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+.mri-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 0 5rem;
+  max-width: 720px;
+}
+
+.mri-hero .mri-eyebrow {
+  color: rgba(255, 255, 255, 0.95);
+  border-left-color: var(--color-link-bright);
+}
+
+.mri-hero h1 {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+/* Hero entrance — CSS only (avoids scroll-animate opacity: 0 stuck state) */
+@media (prefers-reduced-motion: no-preference) {
+  .mri-hero-copy {
+    animation: mri-hero-enter 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes mri-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mri-hero-copy {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Shared section + eyebrow */
+.mri-eyebrow {
+  margin: 0 0 1rem;
+  padding-left: 12px;
+  border-left: 3px solid var(--color-link);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.mri-section {
+  padding: 4rem 0;
+}
+
+.mri-steps-section {
+  background: var(--color-white);
+}
+
+/*
+ * Light sections — must beat any global #main-content .mri-page { color: #fff }
+ * rules (leftover from dark landing) via higher specificity.
+ */
+#main-content .mri-page .mri-section,
+#main-content .mri-page .mri-pain-mosaic,
+#main-content .mri-page .mri-zip-section,
+#main-content .mri-page .mri-bottom-cta {
+  color: var(--color-navy);
+}
+
+#main-content .mri-page .mri-section h2,
+#main-content .mri-page .mri-section h3,
+#main-content .mri-page .mri-section h4,
+#main-content .mri-page .mri-pain-cell-copy h3,
+#main-content .mri-page .mri-benefit h3,
+#main-content .mri-page .mri-step h4,
+#main-content .mri-page .mri-testimonial h3,
+#main-content .mri-page .mri-testimonial-name {
+  color: var(--color-navy);
+}
+
+#main-content .mri-page .mri-section p,
+#main-content .mri-page .mri-pain-cell-copy p,
+#main-content .mri-page .mri-step p,
+#main-content .mri-page .mri-benefit p,
+#main-content .mri-page .mri-bottom-cta-inner > p {
+  color: var(--color-muted);
+}
+
+#main-content .mri-page .mri-section .mri-eyebrow,
+#main-content .mri-page .mri-pain-mosaic .mri-eyebrow {
+  color: var(--color-muted);
+}
+
+.mri-benefits-section {
+  background: var(--color-bg-light);
+}
+
+.mri-testimonials-section {
+  background: var(--color-white);
+}
+
+.mri-steps-section .mri-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.mri-steps-head h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+  max-width: 900px;
+}
+
+.mri-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 922px) {
+  .mri-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.mri-step-icon {
+  width: 49px;
+  height: 49px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.mri-step h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.mri-step p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* Benefits */
+.mri-benefits-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+@media (min-width: 922px) {
+  .mri-benefits-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .mri-benefits-aside {
+    width: 42%;
+    position: sticky;
+    top: 100px;
+  }
+
+  .mri-benefits-grid {
+    width: 58%;
+  }
+}
+
+.mri-benefits-aside h2 {
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+.mri-benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 544px) {
+  .mri-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mri-benefit {
+  background: var(--color-white);
+  border: 1px solid var(--color-input-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.mri-benefit-icon {
+  width: 49px;
+  height: 49px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.mri-benefit h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+.mri-benefit p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* Pain mosaic */
+.mri-pain-mosaic {
+  background: var(--color-bg-light);
+  padding: 0;
+}
+
+.mri-pain-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 922px) {
+  .mri-pain-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mri-pain-cell-image {
+  line-height: 0;
+  background: var(--color-white);
+}
+
+.mri-pain-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mri-pain-cell-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.75rem 1.25rem;
+  background: var(--color-white);
+  min-height: 180px;
+}
+
+@media (min-width: 922px) {
+  .mri-pain-cell-copy {
+    padding: 1.75rem;
+    min-height: 0;
+  }
+}
+
+.mri-pain-cell-copy h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+.mri-pain-cell-copy p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* Testimonials */
+.mri-testimonials-section .mri-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mri-testimonials-head h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+.mri-testimonials {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 922px) {
+  .mri-testimonials {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.mri-testimonial {
+  background: var(--color-bg-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.mri-testimonial h3 {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-navy);
+}
+
+.mri-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mri-testimonial-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mri-testimonial-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+/* ZIP CTA band */
+.mri-zip-section {
+  position: relative;
+  background-color: var(--color-bg-light);
+  background-image: url("/images/mri/Group-26.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 4rem 0;
+}
+
+.mri-zip-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  pointer-events: none;
+}
+
+.mri-zip-block {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#main-content .mri-page .mri-zip-section .mri-eyebrow,
+#main-content .mri-page .mri-zip-block h2 {
+  color: var(--color-navy);
+}
+
+#main-content .mri-page .mri-zip-block > p {
+  color: var(--color-muted);
+}
+
+.mri-zip-section .mri-eyebrow {
+  display: inline-block;
+  color: var(--color-navy);
+  border-left-color: var(--color-link);
+}
+
+.mri-zip-block h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+.mri-zip-block > p {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+/* Bottom CTA */
+.mri-bottom-cta {
+  background: var(--color-white);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--color-input-border);
+}
+
+.mri-bottom-cta-inner {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.mri-bottom-logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  line-height: 0;
+}
+
+.mri-bottom-cta-inner > p {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+/* ZIP form layout width on auto page */
+.mri-zip-block .zip-quote-form--mri {
+  max-width: 480px;
+}
+
+.mri-bottom-cta-inner .zip-quote-form--mri {
+  max-width: 560px;
+}
+
+/* Subtle hover polish (respects reduced motion via globals) */
+@media (prefers-reduced-motion: no-preference) {
+  .mri-benefit {
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mri-benefit:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 4, 34, 0.1);
+  }
+
+  .mri-testimonial {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mri-testimonial:hover {
+    transform: translateY(-2px);
+  }
+
+  .mri-pain-img {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mri-pain-cell-image:hover .mri-pain-img {
+    transform: scale(1.03);
+  }
+
+  .mri-btn-primary {
+    transition:
+      background 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .mri-btn-primary:hover {
+    transform: translateY(-1px);
+  }
+
+  .mri-btn-primary:active {
+    transform: translateY(0);
+  }
+}

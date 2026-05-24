@@ -1,25 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { ContactModal } from "./ContactModal";
+import { StartSavingCTA } from "./StartSavingCTA";
 
 type Props = {
   className?: string;
+  label?: string;
 };
 
-export function GetStartedButton({ className }: Props) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <button
-        type="button"
-        className={className ? `btn btn-primary ${className}` : "btn btn-primary"}
-        onClick={() => setOpen(true)}
-      >
-        Get Started
-      </button>
-      <ContactModal open={open} onClose={() => setOpen(false)} />
-    </>
-  );
+export function GetStartedButton({
+  className = "",
+  label = "Get Started",
+}: Props) {
+  return <StartSavingCTA className={className} label={label} />;
 }

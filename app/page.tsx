@@ -69,15 +69,15 @@ export default function HomePage() {
             <div className="hero-banner-overlay" aria-hidden="true" />
             <div className="hero-banner-body">
               <div className="hero-content">
-                <h1>Your Go-To Guide for Everything Insurance</h1>
+                <h1>Save on Car Insurance — Get the Best Rates</h1>
                 <p>
-                  At Insurance Matters, we break it all down into
+                  My Ride Insured helps you compare top providers instantly,
                   <br />
-                  simple, helpful, and actionable tips—so you can
+                  so you can find affordable coverage and make smart choices
                   <br />
-                  make smart choices without the stress.
+                  without the stress.
                 </p>
-                <GetStartedButton className="hero-cta" />
+                <GetStartedButton className="hero-cta" label="Start Saving Today" />
               </div>
             </div>
             <nav className="hero-nav" aria-label="Insurance categories">
@@ -167,12 +167,12 @@ export default function HomePage() {
       <section className="why-section">
         <div className="container why-inner">
           <div className="why-content">
-            <h2 className="section-title">Why Insurance Matters?</h2>
+            <h2 className="section-title">Why Choose My Ride Insured?</h2>
             <p>
               We get it—there are plenty of resources out there about insurance,
-              but we like to do things differently. Our goal is to be your go-to
-              friend for all things insurance. Here&apos;s why thousands trust
-              Insurance Matters:
+              but we like to do things differently. Our goal is to help you save
+              on coverage that fits your life. Here&apos;s why thousands trust
+              My Ride Insured:
             </p>
             <ul>
               <li>
@@ -189,9 +189,7 @@ export default function HomePage() {
                 and health, we&apos;ve got every angle covered.
               </li>
             </ul>
-            <Link href="/" className="btn btn-accent">
-              Get debt help now
-            </Link>
+            <GetStartedButton label="Start Saving Today" />
           </div>
           <div className="why-image">
             <Image

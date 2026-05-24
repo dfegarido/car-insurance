@@ -19,7 +19,7 @@ export default async function HomePaginatedPage({ params }: Props) {
   if (Number.isNaN(page) || page < 2) notFound();
 
   return (
-    <section className="expert-tips" style={{ padding: "4rem 0" }}>
+    <section className="page-section expert-tips">
       <div className="container">
         <h1 className="section-title section-title-center">
           Expert Tips for Your Next Financial Move

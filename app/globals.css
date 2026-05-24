@@ -1,12 +1,18 @@
 :root {
-  --color-accent: #e65644;
+  /* The Insurance Provider palette — matches header & footer */
   --color-navy: #000422;
-  --color-muted: #8e91aa;
-  --color-bg-light: #f3f3f3;
-  --color-white: #ffffff;
+  --color-accent: #005a9f;
+  --color-accent-dark: #004d92;
   --color-link: #005a9f;
   --color-link-hover: #00b5a0;
-  --color-border: #dddddd;
+  --color-link-bright: #6ec1e4;
+  --color-muted: #8e91aa;
+  --color-muted-on-dark: #abb8c3;
+  --color-bg-light: #f3f3f3;
+  --color-dark: #000422;
+  --color-white: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-input-border: #dddddd;
   --max-width: 1200px;
 }
 
@@ -34,15 +40,71 @@ html {
   top: 16px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 body {
   margin: 0;
-  font-family: var(--font-work-sans), "Work Sans", "Helvetica", sans-serif;
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-weight: 300;
   color: var(--color-navy);
   background: var(--color-white);
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-weight: 600;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* MRI-style CTA buttons (auto page + shared components) */
+.mri-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.mri-btn-primary {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.mri-btn-primary:hover {
+  background: var(--color-link-hover);
+  color: var(--color-white);
 }
 
 #main-content {
@@ -123,23 +185,35 @@ img {
   align-items: center;
   justify-content: center;
   padding: 12px 28px;
+  font-family: var(--font-mulish), "Mulish", sans-serif;
   font-size: 15px;
   font-weight: 500;
   border-radius: 4px;
-  border: 1px solid var(--color-border);
+  border: 1px solid transparent;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
+/* Standard content sections — shared across pages */
+.page-section {
+  padding: 4rem 0;
+  background: var(--color-white);
+}
+
+.page-section--muted {
+  background: var(--color-bg-light);
+}
+
 .btn-primary {
-  background: var(--color-link);
+  background: var(--color-accent);
   color: var(--color-white);
-  border-color: var(--color-link);
+  border-color: var(--color-accent);
 }
 
 .btn-primary:hover {
   background: var(--color-bg-light);
   color: var(--color-navy);
+  border-color: var(--color-input-border);
 }
 
 .btn-accent {
@@ -149,17 +223,13 @@ img {
 }
 
 .btn-accent:hover {
-  opacity: 0.9;
-  color: var(--color-white);
+  background: var(--color-bg-light);
+  color: var(--color-navy);
+  border-color: var(--color-input-border);
 }
 
 .section-title {
-  font-family: var(--font-roboto), "Roboto", sans-serif;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  color: var(--color-navy);
   margin: 0 0 1.5rem;
-  line-height: 1.2;
 }
 
 .post-grid {
@@ -181,11 +251,8 @@ img {
 }
 
 .post-card-title {
-  font-size: 1.125rem;
-  font-weight: 600;
   margin: 1rem 0 0.5rem;
   color: var(--color-navy);
-  line-height: 1.35;
 }
 
 .post-card-title a {
@@ -197,13 +264,11 @@ img {
 }
 
 .post-card-date {
-  font-size: 0.875rem;
   color: var(--color-muted);
   margin-bottom: 0.5rem;
 }
 
 .post-card-excerpt {
-  font-size: 0.9375rem;
   color: var(--color-muted);
   margin: 0;
 }
@@ -229,15 +294,12 @@ img {
   min-width: 40px;
   height: 40px;
   padding: 0 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  font-size: 0.9375rem;
   color: var(--color-navy);
 }
 
 .pagination a:hover {
-  border-color: var(--color-link-hover);
-  color: var(--color-link-hover);
+  border-color: var(--color-link);
+  color: var(--color-link);
 }
 
 .pagination .active {
@@ -249,15 +311,11 @@ img {
 .wp-content {
   max-width: 800px;
   margin: 0 auto;
-  font-size: 1.0625rem;
-  line-height: 1.75;
 }
 
 .wp-content h1,
 .wp-content h2,
 .wp-content h3 {
-  font-family: var(--font-roboto), "Roboto", sans-serif;
-  color: var(--color-navy);
   margin-top: 2rem;
 }
 
@@ -270,13 +328,6 @@ img {
 }
 
 .archive-header {
-  padding: 3rem 0 2rem;
   background: var(--color-bg-light);
 }
 
-.archive-header h1 {
-  font-family: var(--font-roboto), "Roboto", sans-serif;
-  font-size: 2.5rem;
-  margin: 0;
-  color: var(--color-navy);
-}

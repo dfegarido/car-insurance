@@ -102,12 +102,6 @@ function setupAutoInsuranceAnimations() {
     });
   }
 
-  page.querySelectorAll(".mri-bottom-cta-inner > *").forEach((el, index) => {
-    el.classList.add("scroll-animate");
-    (el as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
-    targets.push(el);
-  });
-
   const observer = observe(targets);
 
   return () => {

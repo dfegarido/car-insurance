@@ -26,7 +26,6 @@ const SKIP_SECTION_CLASSES = [
   "mri-pain-mosaic",
   "mri-pain-section",
   "mri-zip-section",
-  "mri-bottom-cta",
 ];
 
 function setupScrollAnimations() {

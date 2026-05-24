@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { StartSavingCTA } from "@/components/StartSavingCTA";
 import { ZipQuoteForm } from "@/components/ZipQuoteForm";
-import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Auto Insurance | Save on Car Insurance",
@@ -248,31 +246,6 @@ export default function AutoInsurancePage() {
             id="zip-quote-main"
             variant="mri"
             layout="stacked"
-            placeholder="Enter your ZIP code"
-            buttonText="Compare Now"
-          />
-        </div>
-      </section>
-
-      <section className="mri-bottom-cta">
-        <div className="mri-wrap mri-bottom-cta-inner">
-          <Link href="/" className="mri-bottom-logo">
-            <Image
-              src={SITE_LOGO}
-              alt={SITE_LOGO_ALT}
-              width={200}
-              height={69}
-            />
-          </Link>
-          <p>
-            Why overpay for car insurance when better rates are just a click
-            away? My Ride Insured helps you compare top providers instantly,
-            ensuring you get the best coverage at the lowest price.
-          </p>
-          <ZipQuoteForm
-            id="zip-quote-bottom"
-            variant="mri"
-            layout="inline"
             placeholder="Enter your ZIP code"
             buttonText="Compare Now"
           />

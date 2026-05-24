@@ -118,8 +118,7 @@
  */
 #main-content .mri-page .mri-section,
 #main-content .mri-page .mri-pain-mosaic,
-#main-content .mri-page .mri-zip-section,
-#main-content .mri-page .mri-bottom-cta {
+#main-content .mri-page .mri-zip-section {
   color: var(--color-navy);
 }
 
@@ -137,8 +136,7 @@
 #main-content .mri-page .mri-section p,
 #main-content .mri-page .mri-pain-cell-copy p,
 #main-content .mri-page .mri-step p,
-#main-content .mri-page .mri-benefit p,
-#main-content .mri-page .mri-bottom-cta-inner > p {
+#main-content .mri-page .mri-benefit p {
   color: var(--color-muted);
 }
 
@@ -460,40 +458,9 @@
   color: var(--color-muted);
 }
 
-/* Bottom CTA */
-.mri-bottom-cta {
-  background: var(--color-white);
-  padding: 4rem 0 2rem;
-  border-top: 1px solid var(--color-input-border);
-}
-
-.mri-bottom-cta-inner {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.mri-bottom-logo {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  line-height: 0;
-}
-
-.mri-bottom-cta-inner > p {
-  margin: 0 0 2rem;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.65;
-  color: var(--color-muted);
-}
-
 /* ZIP form layout width on auto page */
 .mri-zip-block .zip-quote-form--mri {
   max-width: 480px;
-}
-
-.mri-bottom-cta-inner .zip-quote-form--mri {
-  max-width: 560px;
 }
 
 /* Subtle hover polish (respects reduced motion via globals) */

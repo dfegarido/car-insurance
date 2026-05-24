@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins, Roboto, Work_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ScrollAnimations } from "@/components/ScrollAnimations";
 import "./globals.css";
 
 const workSans = Work_Sans({
@@ -50,7 +51,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content">
+          {children}
+          <ScrollAnimations />
+        </main>
         <Footer />
       </body>
     </html>

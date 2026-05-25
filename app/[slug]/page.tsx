@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { isSyndicatedNewsSlug } from "@/lib/syndicated-articles";
 import {
   formatDate,
   getFeaturedImage,
@@ -44,9 +45,10 @@ export default async function ArticlePage({ params }: Props) {
 
   const image = getFeaturedImage(post);
   const title = stripHtml(post.title.rendered);
+  const isNewsArticle = isSyndicatedNewsSlug(slug);
 
   return (
-    <article className="article-page">
+    <article className={`article-page${isNewsArticle ? " news-article" : ""}`}>
       <header className="article-header">
         <div className="container">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -65,10 +67,12 @@ export default async function ArticlePage({ params }: Props) {
           />
         </div>
       )}
-      <div
-        className="container wp-content article-body"
-        dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-      />
+      <div className="container article-body">
+        <div
+          className={isNewsArticle ? "wp-content news-article-content" : "wp-content"}
+          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+        />
+      </div>
     </article>
   );
 }

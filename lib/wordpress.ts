@@ -74,9 +74,75 @@ export async function getPosts(options?: {
   }
 
   const posts = (await res.json()) as WPPost[];
+  const { enrichPostsFromStatic } = await import("./static-posts");
   const total = Number(res.headers.get("x-wp-total") ?? 0);
   const totalPages = Number(res.headers.get("x-wp-totalpages") ?? 0);
-  return { posts, total, totalPages };
+  return { posts: enrichPostsFromStatic(posts), total, totalPages };
+}
+
+const LIVE_SITE = "https://www.theinsuranceprovider.com";
+
+function htmlTextLength(html: string): number {
+  return stripHtml(html).length;
+}
+
+/** WP API often returns only a teaser; pull full entry HTML from the live article page. */
+async function fetchLiveEntryContent(slug: string): Promise<string | null> {
+  try {
+    const res = await fetch(`${LIVE_SITE}/${slug}/`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return null;
+
+    const html = await res.text();
+    const match = html.match(
+      /<div class="entry-content clear"[^>]*>\s*([\s\S]*?)<\/div>\s*<!-- \.entry-content/
+    );
+    if (!match) return null;
+
+    const content = match[1].trim();
+    return content.length > 0 ? content : null;
+  } catch {
+    return null;
+  }
+}
+
+const MIN_FULL_ARTICLE_CHARS = 400;
+
+function mergePostContent(
+  post: WPPost,
+  liveHtml: string | null,
+  syndicatedHtml: string | null
+): WPPost {
+  const apiContent = post.content.rendered;
+  const apiLen = htmlTextLength(apiContent);
+  const liveLen = liveHtml ? htmlTextLength(liveHtml) : 0;
+  const syndicatedLen = syndicatedHtml ? htmlTextLength(syndicatedHtml) : 0;
+  const excerptHtml = post.excerpt.rendered;
+
+  let rendered = apiContent;
+  let bestLen = apiLen;
+
+  if (liveHtml && liveLen > bestLen) {
+    rendered = liveHtml;
+    bestLen = liveLen;
+  }
+  if (syndicatedHtml && syndicatedLen > bestLen) {
+    rendered = syndicatedHtml;
+    bestLen = syndicatedLen;
+  }
+  if (
+    bestLen < 120 &&
+    excerptHtml &&
+    htmlTextLength(excerptHtml) > bestLen
+  ) {
+    rendered = excerptHtml;
+  }
+
+  return {
+    ...post,
+    content: { rendered },
+  };
 }
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
@@ -88,7 +154,18 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
     const posts = await wpFetch<WPPost[]>(
       `/posts?slug=${encodeURIComponent(slug)}&_embed=1`
     );
-    return posts[0] ?? null;
+    const post = posts[0];
+    if (!post) return null;
+
+    const liveHtml = await fetchLiveEntryContent(slug);
+    const needsSyndicated =
+      htmlTextLength(post.content.rendered) < MIN_FULL_ARTICLE_CHARS;
+    const syndicatedHtml = needsSyndicated
+      ? await (
+          await import("./syndicated-articles")
+        ).fetchInsuranceJournalContent(slug)
+      : null;
+    return mergePostContent(post, liveHtml, syndicatedHtml);
   } catch {
     return null;
   }

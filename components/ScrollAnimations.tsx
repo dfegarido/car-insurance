@@ -108,13 +108,7 @@ function setupScrollAnimations() {
   main.querySelectorAll(".article-featured").forEach((el) => {
     register(el, "scroll-animate-fade", targets);
   });
-  main
-    .querySelectorAll(
-      ".article-body > p:first-of-type, .article-body > h2, .article-body > h3, .article-body > .takeaway, .article-body > ul, .article-body > blockquote"
-    )
-    .forEach((el, index) => {
-      register(el, "scroll-animate", targets, `${Math.min(index, 12) * 0.06}s`);
-    });
+  /* Article body — no scroll fade (opacity:0 hid syndicated news text on load) */
 
   /* Legal & static content pages */
   main.querySelectorAll(".legal-page > .container").forEach((el) => {
@@ -128,9 +122,9 @@ function setupScrollAnimations() {
     });
   });
 
-  /* Cards & list items */
-  main.querySelectorAll(".post-card").forEach((el, index) => {
-    register(el, "scroll-animate", targets, `${(index % 4) * 0.08}s`);
+  /* Post cards — fade text blocks only (whole-card opacity hid titles/excerpts) */
+  main.querySelectorAll(".post-card-date, .post-card-title, .post-card-excerpt").forEach((el, index) => {
+    register(el, "scroll-animate-fade", targets, `${(index % 6) * 0.05}s`);
   });
   main.querySelectorAll(".coverage-list li").forEach((el, index) => {
     register(el, "scroll-animate", targets, `${(index % 4) * 0.08}s`);

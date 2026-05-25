@@ -33,7 +33,10 @@ export function PostCard({ post }: { post: WPPost }) {
       <h3 className="post-card-title">
         <Link href={`/${post.slug}`}>{title}</Link>
       </h3>
-      <p className="post-card-excerpt">{excerpt}</p>
+      {excerpt ? <p className="post-card-excerpt">{excerpt}</p> : null}
+      <Link href={`/${post.slug}`} className="post-card-read-more">
+        Read more
+      </Link>
     </article>
   );
 }

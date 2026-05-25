@@ -75,3 +75,23 @@ export function getStaticPostBySlug(slug: string): WPPost | null {
 export function hasStaticPost(slug: string): boolean {
   return slug in STATIC_POSTS;
 }
+
+/** Apply bundled featured images (and media) when WP API omits them. */
+export function enrichPostsFromStatic(posts: WPPost[]): WPPost[] {
+  return posts.map((post) => {
+    const staticPost = STATIC_POSTS[post.slug];
+    if (!staticPost) return post;
+
+    const staticMedia = staticPost._embedded?.["wp:featuredmedia"];
+    if (!staticMedia?.length) return post;
+
+    return {
+      ...post,
+      featured_media: staticPost.featured_media || post.featured_media,
+      _embedded: {
+        ...post._embedded,
+        "wp:featuredmedia": staticMedia,
+      },
+    };
+  });
+}

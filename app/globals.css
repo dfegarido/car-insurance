@@ -139,10 +139,20 @@ textarea {
   transform: none;
 }
 
+.scroll-animate-card-media {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
 .scroll-animate-visible,
 .scroll-animate-left.scroll-animate-visible,
 .scroll-animate-right.scroll-animate-visible,
-.scroll-animate-fade.scroll-animate-visible {
+.scroll-animate-fade.scroll-animate-visible,
+.scroll-animate-card-media.scroll-animate-visible {
   opacity: 1;
   transform: none;
 }
@@ -151,7 +161,8 @@ textarea {
   .scroll-animate,
   .scroll-animate-left,
   .scroll-animate-right,
-  .scroll-animate-fade {
+  .scroll-animate-fade,
+  .scroll-animate-card-media {
     opacity: 1;
     transform: none;
     transition: none;

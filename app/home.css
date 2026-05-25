@@ -223,9 +223,49 @@
   background: var(--color-white);
 }
 
+.expert-tips .post-grid {
+  align-items: stretch;
+}
+
+.expert-tips .post-card {
+  border-radius: 8px;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.expert-tips .post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 4, 34, 0.1);
+}
+
+.expert-tips .post-card-image {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.expert-tips .post-card:hover .post-card-image {
+  transform: scale(1.02);
+}
+
 .page-section.expert-tips {
   padding: 4rem 0 5rem;
   background: var(--color-white);
+}
+
+.page-section.expert-tips .post-card {
+  border-radius: 8px;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.page-section.expert-tips .post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 4, 34, 0.1);
+}
+
+.page-section.expert-tips .post-card:hover .post-card-image {
+  transform: scale(1.02);
 }
 
 .page-section.expert-tips .section-title-center {

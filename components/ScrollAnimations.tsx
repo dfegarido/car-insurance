@@ -8,8 +8,11 @@ const ANIMATE_CLASSES = [
   "scroll-animate-left",
   "scroll-animate-right",
   "scroll-animate-fade",
+  "scroll-animate-card-media",
   "scroll-animate-visible",
 ] as const;
+
+const EXPERT_TIPS_ROOT = ".expert-tips, .page-section.expert-tips";
 
 /** Whole-page wrappers — never animate these (too tall → content vanishes) */
 const SKIP_ROOT_CLASSES = ["article-page", "legal-page", "mri-page", "mri-page-full"];
@@ -84,6 +87,40 @@ function getArticleContentBlocks(main: HTMLElement): Element[] {
   return Array.from(wp.querySelectorAll(":scope > *"));
 }
 
+/** Expert Tips post cards — image lift, then text stagger */
+function registerExpertTipsCards(main: HTMLElement, targets: Element[]) {
+  main.querySelectorAll(`${EXPERT_TIPS_ROOT} .section-title`).forEach((el) => {
+    register(el, "scroll-animate-fade", targets);
+  });
+
+  main.querySelectorAll(`${EXPERT_TIPS_ROOT} .post-card`).forEach((card, index) => {
+    const baseDelay = `${(index % 6) * 0.12}s`;
+
+    const media = card.querySelector(
+      ".post-card-image, .post-card-placeholder, a .post-card-image"
+    );
+    if (media) {
+      register(media, "scroll-animate-card-media", targets, baseDelay);
+    }
+
+    const textParts = card.querySelectorAll(
+      ".post-card-date, .post-card-title, .post-card-excerpt, .post-card-read-more"
+    );
+    textParts.forEach((el, partIndex) => {
+      register(
+        el,
+        "scroll-animate",
+        targets,
+        `${(index % 6) * 0.12 + 0.08 + partIndex * 0.05}s`
+      );
+    });
+  });
+
+  main.querySelectorAll(`${EXPERT_TIPS_ROOT} .pagination`).forEach((el) => {
+    register(el, "scroll-animate-fade", targets, "0.2s");
+  });
+}
+
 function setupScrollAnimations() {
   const main = document.getElementById("main-content");
   if (!main) return () => {};
@@ -154,17 +191,7 @@ function setupScrollAnimations() {
     });
   });
 
-  /* Expert Tips — title, cards, and pagination */
-  const expertTipsRoot = ".expert-tips, .page-section.expert-tips";
-  main.querySelectorAll(`${expertTipsRoot} .section-title`).forEach((el) => {
-    register(el, "scroll-animate-fade", targets);
-  });
-  main.querySelectorAll(`${expertTipsRoot} .post-card`).forEach((el, index) => {
-    register(el, "scroll-animate", targets, `${(index % 6) * 0.1}s`);
-  });
-  main.querySelectorAll(`${expertTipsRoot} .pagination`).forEach((el) => {
-    register(el, "scroll-animate-fade", targets, "0.15s");
-  });
+  registerExpertTipsCards(main, targets);
 
   /* Home / Health / Business insurance listings + paginated subpages */
   main.querySelectorAll(".archive-header .container").forEach((el) => {
@@ -181,7 +208,7 @@ function setupScrollAnimations() {
 
   /* Other post grids — fade text blocks only (whole-card opacity hid titles/excerpts) */
   main.querySelectorAll(".post-card-date, .post-card-title, .post-card-excerpt").forEach((el, index) => {
-    if (el.closest(".expert-tips, .page-section.expert-tips")) return;
+    if (el.closest(EXPERT_TIPS_ROOT)) return;
     if (el.closest(categoryListingRoot)) return;
     register(el, "scroll-animate-fade", targets, `${(index % 6) * 0.05}s`);
   });

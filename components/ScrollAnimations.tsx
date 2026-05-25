@@ -27,6 +27,7 @@ const SKIP_SECTION_CLASSES = [
   "mri-zip-section",
   "mri-bottom-cta",
   "contact-hero",
+  "estimate-section",
 ];
 
 const SECTION_SELECTOR =

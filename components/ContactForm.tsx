@@ -22,8 +22,8 @@ export function ContactForm() {
         Your message (optional)
         <textarea name="message" rows={5} />
       </label>
-      <button type="submit" className="btn btn-primary">
-        Send Message
+      <button type="submit" className="btn btn-primary btn-submit">
+        Submit
       </button>
     </form>
   );

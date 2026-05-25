@@ -1,62 +1,205 @@
-.contact-section {
-  padding: 3rem 0 4rem;
+/* Contact page — matches theinsuranceprovider.com/contact-us/ */
+
+.contact-hero {
+  position: relative;
+  padding: 160px 40px 152px;
+  text-align: center;
+  background-color: var(--color-navy);
+  background-image: url("/images/contact-hero.jpg");
+  background-position: center left;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.contact-grid {
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.51);
+  pointer-events: none;
+}
+
+.contact-hero .container {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.contact-hero h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+/* Entrance animation — not scroll-animate (avoids opacity: 0 on load) */
+@media (prefers-reduced-motion: no-preference) {
+  .contact-hero .container {
+    animation: contact-hero-enter 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes contact-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.contact-section {
+  padding: 104px 40px 0;
+}
+
+.contact-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 0;
   align-items: start;
 }
 
-.contact-details {
-  margin-top: 2rem;
-}
-
-.contact-block {
-  margin-bottom: 1.5rem;
-}
-
-.contact-block p {
+.contact-main h2 {
   margin: 0;
+  padding-right: 80px;
+  padding-bottom: 20px;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
 }
 
-.estimate-section {
-  background: var(--color-navy);
-  color: var(--color-white);
-  padding: 3rem 0;
+.contact-intro {
+  margin: 0 40px 0 0;
+  padding-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.65;
 }
 
-.estimate-inner {
+.contact-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.contact-info-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 24px;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-white);
+  text-align: left;
+}
+
+.contact-info-row .contact-info-card {
+  width: 50%;
+  flex: 1 1 50%;
+  min-width: 240px;
+}
+
+.contact-info-icon {
+  display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg-light);
+  color: #00b09e;
 }
 
-.estimate-inner h2 {
-  margin: 0 0 0.5rem;
+.contact-info-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
-.estimate-inner p {
+.contact-info-card-body h5 {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.contact-info-card-body h5 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-info-card-body h5 a:hover {
+  color: var(--color-link-hover);
+}
+
+.contact-info-card-body p {
   margin: 0;
-  max-width: 520px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
-.estimate-actions {
+.contact-info-card-body p a {
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.contact-info-card-body p a:hover {
+  color: var(--color-link-hover);
+}
+
+.contact-info-card--emergency {
+  background: #00b09e;
+}
+
+.contact-info-card--emergency .contact-info-icon {
+  background: var(--color-white);
+  color: #00b09e;
+}
+
+.contact-info-card--emergency .contact-info-card-body h5,
+.contact-info-card--emergency .contact-info-card-body h5 a,
+.contact-info-card--emergency .contact-info-card-body p,
+.contact-info-card--emergency .contact-info-card-body p a {
+  color: var(--color-white);
+}
+
+.contact-info-card--emergency .contact-info-card-body p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.contact-info-card--emergency .contact-info-card-body h5 a:hover,
+.contact-info-card--emergency .contact-info-card-body p a:hover {
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+.contact-aside {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  min-height: 400px;
 }
 
 .contact-page-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: var(--color-bg-light);
-  padding: 2rem;
-  border-radius: 0;
+  margin: 0;
+  padding: 30px;
+  background: var(--color-white);
 }
 
 .contact-page-form label {
@@ -65,8 +208,211 @@
   gap: 0.35rem;
 }
 
-@media (max-width: 768px) {
-  .contact-grid {
+.contact-page-form input,
+.contact-page-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+}
+
+.contact-page-form .btn-submit {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.contact-map {
+  flex: 1;
+  min-height: 400px;
+  background: var(--color-bg-light);
+}
+
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border: 0;
+}
+
+.estimate-section {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding: 200px 40px 120px;
+  color: var(--color-white);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 5, 47, 0) 16%,
+    var(--color-navy) 16%
+  );
+}
+
+.estimate-section::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(55%, 520px);
+  height: 70%;
+  background: url("/images/contact-cta-bg.png") no-repeat bottom right;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.estimate-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.estimate-copy {
+  flex: 1 1 320px;
+  max-width: 560px;
+  padding-right: 40%;
+}
+
+.estimate-copy h2 {
+  margin: 0 0 0.5rem;
+  color: var(--color-white);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.estimate-copy p {
+  margin: 0 160px 0 0;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.estimate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 32px;
+  align-items: center;
+}
+
+.btn-estimate-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #e65644;
+  background: var(--color-white);
+  border: 1px solid var(--color-white);
+  border-radius: 4px;
+  box-shadow: 0 24px 80px -8px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-estimate-primary:hover {
+  color: var(--color-white);
+  background: transparent;
+  border-color: var(--color-white);
+}
+
+.btn-estimate-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--color-white);
+  background: transparent;
+  border: 1px solid var(--color-white);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-estimate-outline:hover {
+  color: #e65644;
+  background: var(--color-white);
+}
+
+@media (max-width: 1024px) {
+  .contact-hero {
+    background-position: center center;
+  }
+
+  .contact-section {
+    padding: 80px 40px 0;
+  }
+
+  .contact-layout {
     grid-template-columns: 1fr;
+  }
+
+  .contact-main {
+    padding-bottom: 80px;
+  }
+
+  .contact-main h2 {
+    padding-right: 0;
+  }
+
+  .contact-intro {
+    margin-right: 0;
+  }
+
+  .contact-info-row .contact-info-card {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .estimate-section {
+    padding: 120px 40px 80px;
+  }
+
+  .estimate-copy {
+    padding-right: 0;
+    max-width: none;
+  }
+
+  .estimate-copy p {
+    margin-right: 0;
+  }
+
+  .estimate-section::after {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-hero {
+    padding: 100px 24px 80px;
+  }
+
+  .contact-section {
+    padding: 64px 24px 0;
+  }
+
+  .estimate-section {
+    padding: 64px 24px;
+  }
+
+  .estimate-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .btn-estimate-primary,
+  .btn-estimate-outline {
+    width: 100%;
   }
 }

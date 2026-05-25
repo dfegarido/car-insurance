@@ -80,10 +80,18 @@ export async function getPosts(options?: {
 }
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
-  const posts = await wpFetch<WPPost[]>(
-    `/posts?slug=${encodeURIComponent(slug)}&_embed=1`
-  );
-  return posts[0] ?? null;
+  const { getStaticPostBySlug } = await import("./static-posts");
+  const staticPost = getStaticPostBySlug(slug);
+  if (staticPost) return staticPost;
+
+  try {
+    const posts = await wpFetch<WPPost[]>(
+      `/posts?slug=${encodeURIComponent(slug)}&_embed=1`
+    );
+    return posts[0] ?? null;
+  } catch {
+    return null;
+  }
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {

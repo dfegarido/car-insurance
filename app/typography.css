@@ -52,6 +52,11 @@
   color: #ffffff;
 }
 
+/* Contact page hero — beat #main-content h1 navy default */
+#main-content .contact-hero h1 {
+  color: #ffffff;
+}
+
 #main-content .mri-hero .mri-eyebrow {
   color: rgba(255, 255, 255, 0.95);
 }
@@ -127,40 +132,6 @@
 .legal-page h1 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: 1.5rem;
-}
-
-.contact-grid h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin: 0 0 1rem;
-}
-
-.contact-grid > div > p {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.contact-block h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-navy);
-}
-
-.contact-block p,
-.contact-block a {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.estimate-section h2 {
-  color: #ffffff;
-  font-size: 1.75rem;
-}
-
-.estimate-section p {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--color-muted-on-dark);
 }
 
 .contact-page-form label {

@@ -286,7 +286,7 @@
   isolation: isolate;
   margin-top: 0;
   margin-bottom: 0;
-  padding: 160px 40px 100px;
+  padding: 5rem 0 5rem;
   color: var(--color-white);
   background-color: var(--color-navy);
 }
@@ -297,11 +297,11 @@
   right: 0;
   bottom: 0;
   z-index: 0;
-  width: min(55%, 520px);
-  height: 65%;
-  max-height: 100%;
+  width: min(42%, 420px);
+  height: min(85%, 320px);
   background: url("/images/contact-cta-bg.png") no-repeat bottom right;
   background-size: contain;
+  opacity: 0.85;
   pointer-events: none;
 }
 
@@ -323,21 +323,19 @@ main:has(.contact-hero) + .site-footer .footer-col-logo {
 .estimate-inner {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2.5rem 3rem;
 }
 
 .estimate-copy {
-  flex: 1 1 320px;
-  max-width: 560px;
-  padding-right: 40%;
+  min-width: 0;
+  max-width: 36rem;
 }
 
 .estimate-copy h2 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
   color: var(--color-white);
   font-size: clamp(1.5rem, 3vw, 3rem);
   font-weight: 600;
@@ -346,7 +344,8 @@ main:has(.contact-hero) + .site-footer .footer-col-logo {
 }
 
 .estimate-copy p {
-  margin: 0 160px 0 0;
+  margin: 0;
+  max-width: 34rem;
   color: var(--color-white);
   font-size: 16px;
   font-weight: 300;
@@ -356,8 +355,10 @@ main:has(.contact-hero) + .site-footer .footer-col-logo {
 .estimate-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px 32px;
+  flex-shrink: 0;
+  gap: 1.25rem 2rem;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .btn-estimate-primary {
@@ -435,24 +436,34 @@ main:has(.contact-hero) + .site-footer .footer-col-logo {
   }
 
   .estimate-section {
-    padding: 120px 40px 72px;
+    padding: 4rem 0 4rem;
   }
 
   main:has(.contact-hero) + .site-footer .footer-main {
     padding-top: 5rem;
   }
 
+  .estimate-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .estimate-copy {
-    padding-right: 0;
     max-width: none;
   }
 
   .estimate-copy p {
-    margin-right: 0;
+    max-width: none;
+  }
+
+  .estimate-actions {
+    justify-content: flex-start;
   }
 
   .estimate-section::after {
-    background-size: cover;
+    width: min(50%, 280px);
+    height: 200px;
+    opacity: 0.6;
   }
 }
 
@@ -466,7 +477,12 @@ main:has(.contact-hero) + .site-footer .footer-col-logo {
   }
 
   .estimate-section {
-    padding: 64px 24px 56px;
+    padding: 3rem 0 3rem;
+  }
+
+  .estimate-section::after {
+    width: 180px;
+    height: 140px;
   }
 
   main:has(.contact-hero) + .site-footer .footer-main {

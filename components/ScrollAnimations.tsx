@@ -134,10 +134,10 @@ function setupScrollAnimations() {
     register(el, "scroll-animate", targets, `${(index % 3) * 0.1}s`);
   });
 
-  /* Contact page blocks */
+  /* Contact page blocks — not estimate CTA (narrow column bug when animated) */
   main
     .querySelectorAll(
-      ".contact-main, .contact-aside, .contact-info-card, .estimate-copy, .estimate-actions"
+      ".contact-main, .contact-aside, .contact-info-card"
     )
     .forEach((el, index) => {
       register(el, "scroll-animate", targets, `${index * 0.08}s`);

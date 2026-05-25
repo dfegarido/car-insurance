@@ -7,6 +7,7 @@ import homeInsuranceClaimPost from "./posts/how-to-file-a-home-insurance-claim.j
 import presidentHealthPolicyPost from "./posts/can-a-new-president-make-health-policy-changes-on-day-one.json";
 import shortTermHealthPlansPost from "./posts/finalized-federal-rule-reduces-total-duration-of-short-term-health-plans-to-4-months.json";
 import typesOfBusinessInsurancePost from "./posts/types-of-business-insurance.json";
+import vermontEqualProtectionPost from "./posts/vermonters-to-vote-on-equal-protection-amendment-to-state-constitution.json";
 
 const STATIC_POSTS: Record<string, WPPost> = {
   "can-a-new-president-make-health-policy-changes-on-day-one":
@@ -20,6 +21,8 @@ const STATIC_POSTS: Record<string, WPPost> = {
   "types-of-business-insurance": typesOfBusinessInsurancePost as WPPost,
   "simple-ways-to-protect-your-business-from-cyberattacks":
     cyberattacksPost as WPPost,
+  "vermonters-to-vote-on-equal-protection-amendment-to-state-constitution":
+    vermontEqualProtectionPost as WPPost,
 };
 
 /** Optional section anchors for “In this article” TOC links */

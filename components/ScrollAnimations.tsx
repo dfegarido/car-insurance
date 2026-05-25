@@ -135,7 +135,7 @@ function setupScrollAnimations() {
   main.querySelectorAll(".coverage-list li").forEach((el, index) => {
     register(el, "scroll-animate", targets, `${(index % 4) * 0.08}s`);
   });
-  main.querySelectorAll(".testimonials-grid blockquote").forEach((el, index) => {
+  main.querySelectorAll(".testimonials-card").forEach((el, index) => {
     register(el, "scroll-animate", targets, `${(index % 3) * 0.1}s`);
   });
 

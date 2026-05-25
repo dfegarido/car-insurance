@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PostListing } from "@/components/PostListing";
 import { GetStartedButton } from "@/components/GetStartedButton";
+import { StarRating } from "@/components/StarRating";
 import "./home.css";
 
 const COVERAGE_ITEMS = [
@@ -160,7 +161,12 @@ export default function HomePage() {
           <h2 className="section-title section-title-center">
             Expert Tips for Your Next Financial Move
           </h2>
-          <PostListing basePath="/" page={1} perPage={10} />
+          <PostListing
+            basePath="/"
+            page={1}
+            perPage={10}
+            showPagination={false}
+          />
         </div>
       </section>
 
@@ -207,27 +213,30 @@ export default function HomePage() {
           <h2 className="section-title section-title-center">
             What Our Readers Think
           </h2>
-          <Image
-            src="/images/testimonials.webp"
-            alt=""
-            width={1195}
-            height={410}
-            className="testimonials-bg"
-          />
-          <div className="testimonials-grid">
-            {TESTIMONIALS.map((t) => (
-              <blockquote key={t.name}>
-                <Image
-                  src="/images/star.webp"
-                  alt=""
-                  width={100}
-                  height={20}
-                  className="stars"
-                />
-                <p>
-                  <strong>{t.name}</strong>
-                  <br />
-                  &ldquo;{t.quote}&rdquo;
+          <div className="testimonials-collage">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/testimonials.webp"
+              alt="Readers sharing their insurance experiences"
+              width={1195}
+              height={411}
+              decoding="async"
+            />
+          </div>
+          <div className="testimonials-cards">
+            {TESTIMONIALS.map((t, index) => (
+              <blockquote
+                key={t.name}
+                className={`testimonials-card testimonials-card--${index + 1}`}
+              >
+                <p className="testimonials-name">
+                  <em>
+                    <strong>{t.name}</strong>
+                  </em>
+                </p>
+                <StarRating className="stars" />
+                <p className="testimonials-quote">
+                  <em>&ldquo;{t.quote}&rdquo;</em>
                 </p>
               </blockquote>
             ))}

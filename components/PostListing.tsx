@@ -7,6 +7,7 @@ type Props = {
   page?: number;
   categoryId?: number;
   perPage?: number;
+  showPagination?: boolean;
 };
 
 export async function PostListing({
@@ -14,6 +15,7 @@ export async function PostListing({
   page = 1,
   categoryId,
   perPage = 10,
+  showPagination = true,
 }: Props) {
   const { posts, totalPages } = await getPosts({
     page,
@@ -28,11 +30,13 @@ export async function PostListing({
           <PostCard key={post.id} post={post} />
         ))}
       </div>
-      <Pagination
-        basePath={basePath}
-        currentPage={page}
-        totalPages={totalPages}
-      />
+      {showPagination && (
+        <Pagination
+          basePath={basePath}
+          currentPage={page}
+          totalPages={totalPages}
+        />
+      )}
     </>
   );
 }

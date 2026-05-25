@@ -218,58 +218,198 @@
   color: var(--color-muted);
 }
 
-.expert-tips {
-  padding: 4rem 0;
-  background: var(--color-white);
-}
-
-.expert-tips .post-grid {
-  align-items: stretch;
-}
-
-.expert-tips .post-card {
-  border-radius: 8px;
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease;
-}
-
-.expert-tips .post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 4, 34, 0.1);
-}
-
-.expert-tips .post-card-image {
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.expert-tips .post-card:hover .post-card-image {
-  transform: scale(1.02);
-}
-
+.expert-tips,
 .page-section.expert-tips {
   padding: 4rem 0 5rem;
   background: var(--color-white);
 }
 
-.page-section.expert-tips .post-card {
-  border-radius: 8px;
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease;
-}
-
-.page-section.expert-tips .post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 4, 34, 0.1);
-}
-
-.page-section.expert-tips .post-card:hover .post-card-image {
-  transform: scale(1.02);
-}
-
+.expert-tips .section-title-center,
 .page-section.expert-tips .section-title-center {
   margin-bottom: 2.5rem;
+  color: var(--color-navy);
+}
+
+.expert-tips .post-grid,
+.page-section.expert-tips .post-grid {
+  align-items: stretch;
+  gap: 2rem;
+}
+
+/* Card shell */
+.expert-tips .post-card,
+.page-section.expert-tips .post-card {
+  margin: 0;
+  padding: 0 0 1.35rem;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-input-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 4, 34, 0.06);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.expert-tips .post-card:hover,
+.page-section.expert-tips .post-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 90, 159, 0.25);
+  box-shadow: 0 14px 36px rgba(0, 90, 159, 0.12);
+}
+
+/* Featured image */
+.expert-tips .post-card > a:first-of-type,
+.page-section.expert-tips .post-card > a:first-of-type {
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--color-bg-light);
+}
+
+.expert-tips .post-card-image,
+.page-section.expert-tips .post-card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0;
+  border-bottom: 3px solid var(--color-accent);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.expert-tips .post-card-placeholder,
+.page-section.expert-tips .post-card-placeholder {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+  border-bottom: 3px solid var(--color-accent);
+  background: linear-gradient(160deg, var(--color-bg-light) 0%, #e6eef6 100%);
+}
+
+.expert-tips .post-card:hover .post-card-image,
+.page-section.expert-tips .post-card:hover .post-card-image {
+  transform: scale(1.03);
+}
+
+/* Card text */
+.expert-tips .post-card-date,
+.expert-tips .post-card-title,
+.expert-tips .post-card-excerpt,
+.page-section.expert-tips .post-card-date,
+.page-section.expert-tips .post-card-title,
+.page-section.expert-tips .post-card-excerpt {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.expert-tips .post-card-date,
+.page-section.expert-tips .post-card-date {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.expert-tips .post-card-title,
+.page-section.expert-tips .post-card-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  color: var(--color-navy);
+}
+
+.expert-tips .post-card-title a,
+.page-section.expert-tips .post-card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.expert-tips .post-card-title a:hover,
+.page-section.expert-tips .post-card-title a:hover {
+  color: var(--color-link);
+}
+
+.expert-tips .post-card-excerpt,
+.page-section.expert-tips .post-card-excerpt {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* Read more — primary palette button */
+.expert-tips .post-card-read-more,
+.page-section.expert-tips .post-card-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  margin: 0 0 0 1.25rem;
+  padding: 0.55rem 1.35rem;
+  font-family: var(--font-mulish), "Mulish", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  opacity: 1;
+  text-decoration: none;
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 90, 159, 0.2);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.expert-tips .post-card-read-more::after,
+.page-section.expert-tips .post-card-read-more::after {
+  content: "→";
+  font-size: 1em;
+  line-height: 1;
+  color: var(--color-white);
+  transition: transform 0.2s ease;
+}
+
+/* Beat scroll-reveal opacity if class was left on the button */
+.expert-tips .post-card-read-more.scroll-animate,
+.expert-tips .post-card-read-more.scroll-animate-visible,
+.page-section.expert-tips .post-card-read-more.scroll-animate,
+.page-section.expert-tips .post-card-read-more.scroll-animate-visible {
+  opacity: 1;
+  transform: none;
+  color: var(--color-white);
+}
+
+.expert-tips .post-card-read-more:hover,
+.page-section.expert-tips .post-card-read-more:hover {
+  color: var(--color-white);
+  opacity: 1;
+  background: var(--color-link-hover);
+  border-color: var(--color-link-hover);
+  box-shadow: 0 4px 14px rgba(0, 181, 160, 0.28);
+  transform: translateY(-1px);
+}
+
+.expert-tips .post-card-read-more:hover::after,
+.page-section.expert-tips .post-card-read-more:hover::after {
+  transform: translateX(3px);
+}
+
+.expert-tips .post-card-read-more:focus-visible,
+.page-section.expert-tips .post-card-read-more:focus-visible {
+  outline: 2px solid var(--color-link-bright);
+  outline-offset: 2px;
 }
 
 .section-title-center {

@@ -34,12 +34,22 @@
   color: var(--color-navy);
 }
 
-#main-content a:not(.btn):not(.mri-btn):not(.post-card-title a) {
+#main-content a:not(.btn):not(.mri-btn):not(.post-card-title a):not(.post-card-read-more) {
   color: var(--color-link);
 }
 
-#main-content a:not(.btn):not(.mri-btn):hover {
+#main-content a:not(.btn):not(.mri-btn):not(.post-card-read-more):hover {
   color: var(--color-link-hover);
+}
+
+#main-content .expert-tips .post-card-read-more,
+#main-content .page-section.expert-tips .post-card-read-more {
+  color: var(--color-white);
+}
+
+#main-content .expert-tips .post-card-read-more:hover,
+#main-content .page-section.expert-tips .post-card-read-more:hover {
+  color: var(--color-white);
 }
 
 /* Home hero — text on banner image only */

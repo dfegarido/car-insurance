@@ -104,7 +104,7 @@ function registerExpertTipsCards(main: HTMLElement, targets: Element[]) {
     }
 
     const textParts = card.querySelectorAll(
-      ".post-card-date, .post-card-title, .post-card-excerpt, .post-card-read-more"
+      ".post-card-date, .post-card-title, .post-card-excerpt"
     );
     textParts.forEach((el, partIndex) => {
       register(

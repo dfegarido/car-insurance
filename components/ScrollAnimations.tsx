@@ -71,6 +71,19 @@ function register(
   targets.push(el);
 }
 
+/** Article detail pages — animate blocks inside body, not the whole wrapper */
+function getArticleContentBlocks(main: HTMLElement): Element[] {
+  const wp = main.querySelector(".article-page .article-body .wp-content");
+  if (!wp) return [];
+
+  const prose = wp.querySelector(":scope > .article-prose");
+  if (prose) {
+    return Array.from(prose.querySelectorAll(":scope > *"));
+  }
+
+  return Array.from(wp.querySelectorAll(":scope > *"));
+}
+
 function setupScrollAnimations() {
   const main = document.getElementById("main-content");
   if (!main) return () => {};
@@ -88,13 +101,29 @@ function setupScrollAnimations() {
     register(el, "scroll-animate", targets);
   });
 
+  const categoryListingRoot = ".page-section:not(.expert-tips)";
+
   /* Standard sections */
   main.querySelectorAll(SECTION_SELECTOR).forEach((el) => {
     const htmlEl = el as HTMLElement;
+    if (
+      htmlEl.classList.contains("archive-header") &&
+      main.querySelector(categoryListingRoot)
+    ) {
+      return;
+    }
     if (SKIP_SECTION_CLASSES.some((cls) => htmlEl.classList.contains(cls))) {
       return;
     }
     if (htmlEl.querySelector(".post-grid")) {
+      /* Listing grids use card-level animations (expert-tips, category archives) */
+      if (
+        htmlEl.classList.contains("expert-tips") ||
+        (htmlEl.classList.contains("page-section") &&
+          !htmlEl.classList.contains("expert-tips"))
+      ) {
+        return;
+      }
       const title = htmlEl.querySelector(".section-title");
       if (title) register(title, "scroll-animate-fade", targets);
       return;
@@ -102,14 +131,16 @@ function setupScrollAnimations() {
     register(htmlEl, "scroll-animate", targets);
   });
 
-  /* Blog / article pages — animate parts, not the full <article> */
-  main.querySelectorAll(".article-header").forEach((el) => {
-    register(el, "scroll-animate-fade", targets);
+  /* Article detail pages (Expert Tips card links) */
+  main.querySelectorAll(".article-page .article-header .container").forEach((el) => {
+    register(el, "scroll-animate", targets);
   });
-  main.querySelectorAll(".article-featured").forEach((el) => {
-    register(el, "scroll-animate-fade", targets);
+  main.querySelectorAll(".article-page .article-featured").forEach((el) => {
+    register(el, "scroll-animate", targets, "0.08s");
   });
-  /* Article body — no scroll fade (opacity:0 hid syndicated news text on load) */
+  getArticleContentBlocks(main).forEach((el, index) => {
+    register(el, "scroll-animate", targets, `${(index % 10) * 0.07}s`);
+  });
 
   /* Legal & static content pages */
   main.querySelectorAll(".legal-page > .container").forEach((el) => {
@@ -123,8 +154,35 @@ function setupScrollAnimations() {
     });
   });
 
-  /* Post cards — fade text blocks only (whole-card opacity hid titles/excerpts) */
+  /* Expert Tips — title, cards, and pagination */
+  const expertTipsRoot = ".expert-tips, .page-section.expert-tips";
+  main.querySelectorAll(`${expertTipsRoot} .section-title`).forEach((el) => {
+    register(el, "scroll-animate-fade", targets);
+  });
+  main.querySelectorAll(`${expertTipsRoot} .post-card`).forEach((el, index) => {
+    register(el, "scroll-animate", targets, `${(index % 6) * 0.1}s`);
+  });
+  main.querySelectorAll(`${expertTipsRoot} .pagination`).forEach((el) => {
+    register(el, "scroll-animate-fade", targets, "0.15s");
+  });
+
+  /* Home / Health / Business insurance listings + paginated subpages */
+  main.querySelectorAll(".archive-header .container").forEach((el) => {
+    if (main.querySelector(categoryListingRoot)) {
+      register(el, "scroll-animate", targets);
+    }
+  });
+  main.querySelectorAll(`${categoryListingRoot} .post-card`).forEach((el, index) => {
+    register(el, "scroll-animate", targets, `${(index % 6) * 0.1}s`);
+  });
+  main.querySelectorAll(`${categoryListingRoot} .pagination`).forEach((el) => {
+    register(el, "scroll-animate-fade", targets, "0.12s");
+  });
+
+  /* Other post grids — fade text blocks only (whole-card opacity hid titles/excerpts) */
   main.querySelectorAll(".post-card-date, .post-card-title, .post-card-excerpt").forEach((el, index) => {
+    if (el.closest(".expert-tips, .page-section.expert-tips")) return;
+    if (el.closest(categoryListingRoot)) return;
     register(el, "scroll-animate-fade", targets, `${(index % 6) * 0.05}s`);
   });
   main.querySelectorAll(".coverage-list li").forEach((el, index) => {

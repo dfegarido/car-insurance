@@ -15,6 +15,12 @@
   padding: 2rem 24px 0;
 }
 
+/* Scroll reveal — per block (not whole body) */
+.article-body .wp-content > .scroll-animate,
+.article-body .article-prose > .scroll-animate {
+  will-change: opacity, transform;
+}
+
 /* Article content from The Insurance Provider / healthinsurance.org */
 .article-body .takeaway {
   margin: 0 0 2rem;

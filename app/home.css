@@ -223,6 +223,15 @@
   background: var(--color-white);
 }
 
+.page-section.expert-tips {
+  padding: 4rem 0 5rem;
+  background: var(--color-white);
+}
+
+.page-section.expert-tips .section-title-center {
+  margin-bottom: 2.5rem;
+}
+
 .section-title-center {
   text-align: center;
 }

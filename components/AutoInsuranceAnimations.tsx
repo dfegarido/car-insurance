@@ -10,6 +10,11 @@ const ANIMATE_CLASSES = [
   "scroll-animate-visible",
 ] as const;
 
+const OBSERVER_OPTIONS: IntersectionObserverInit = {
+  threshold: 0,
+  rootMargin: "0px 0px -6% 0px",
+};
+
 function clearAnimations(root: ParentNode) {
   root
     .querySelectorAll(ANIMATE_CLASSES.map((c) => `.${c}`).join(", "))
@@ -19,21 +24,20 @@ function clearAnimations(root: ParentNode) {
     });
 }
 
-function observe(targets: Element[]): IntersectionObserver {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("scroll-animate-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-  );
+function isInViewport(el: Element): boolean {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight * 0.94 && rect.bottom > 0;
+}
 
-  targets.forEach((el) => observer.observe(el));
-  return observer;
+function register(
+  el: Element,
+  className: string,
+  targets: Element[],
+  delay?: string
+) {
+  el.classList.add(className);
+  if (delay) (el as HTMLElement).style.transitionDelay = delay;
+  targets.push(el);
 }
 
 function setupAutoInsuranceAnimations() {
@@ -48,61 +52,74 @@ function setupAutoInsuranceAnimations() {
 
   const targets: Element[] = [];
 
+  page.querySelectorAll(".mri-hero-copy").forEach((el) => {
+    register(el, "scroll-animate", targets);
+  });
+
   page.querySelectorAll(".mri-steps-head").forEach((el) => {
-    el.classList.add("scroll-animate-fade");
-    targets.push(el);
+    register(el, "scroll-animate-fade", targets);
   });
 
   page.querySelectorAll(".mri-step").forEach((el, index) => {
-    el.classList.add("scroll-animate");
-    (el as HTMLElement).style.transitionDelay = `${index * 0.12}s`;
-    targets.push(el);
+    register(el, "scroll-animate", targets, `${index * 0.1}s`);
   });
 
   page.querySelectorAll(".mri-benefits-aside").forEach((el) => {
-    el.classList.add("scroll-animate-left");
-    targets.push(el);
+    register(el, "scroll-animate-left", targets);
   });
 
   page.querySelectorAll(".mri-benefit").forEach((el, index) => {
-    el.classList.add("scroll-animate");
-    (el as HTMLElement).style.transitionDelay = `${(index % 2) * 0.08 + Math.floor(index / 2) * 0.1}s`;
-    targets.push(el);
+    register(
+      el,
+      "scroll-animate",
+      targets,
+      `${(index % 2) * 0.08 + Math.floor(index / 2) * 0.1}s`
+    );
   });
 
   page.querySelectorAll(".mri-pain-cell-image").forEach((el) => {
-    el.classList.add("scroll-animate-fade");
-    targets.push(el);
+    register(el, "scroll-animate-fade", targets);
   });
 
   page.querySelectorAll(".mri-pain-cell-copy").forEach((el, index) => {
-    el.classList.add(
-      index % 2 === 0 ? "scroll-animate-left" : "scroll-animate-right"
+    register(
+      el,
+      index % 2 === 0 ? "scroll-animate-left" : "scroll-animate-right",
+      targets
     );
-    targets.push(el);
   });
 
   page.querySelectorAll(".mri-testimonials-head").forEach((el) => {
-    el.classList.add("scroll-animate-fade");
-    targets.push(el);
+    register(el, "scroll-animate-fade", targets);
   });
 
   page.querySelectorAll(".mri-testimonial").forEach((el, index) => {
-    el.classList.add("scroll-animate");
-    (el as HTMLElement).style.transitionDelay = `${index * 0.14}s`;
-    targets.push(el);
+    register(el, "scroll-animate", targets, `${index * 0.12}s`);
   });
 
   const zipBlock = page.querySelector(".mri-zip-block");
   if (zipBlock) {
     zipBlock.querySelectorAll(":scope > *").forEach((el, index) => {
-      el.classList.add("scroll-animate-fade");
-      (el as HTMLElement).style.transitionDelay = `${index * 0.08}s`;
-      targets.push(el);
+      register(el, "scroll-animate-fade", targets, `${index * 0.08}s`);
     });
   }
 
-  const observer = observe(targets);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("scroll-animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, OBSERVER_OPTIONS);
+
+  targets.forEach((el) => {
+    if (isInViewport(el)) {
+      el.classList.add("scroll-animate-visible");
+    } else {
+      observer.observe(el);
+    }
+  });
 
   return () => {
     observer.disconnect();

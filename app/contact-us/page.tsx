@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const MAP_EMBED =
-  "https://maps.google.com/maps?q=123%205th%20avenue&t=m&z=16&output=embed&iwloc=near";
+  "https://maps.google.com/maps?q=2045%20W%20Grand%20Ave%2C%20Ste%20B%2C%20Chicago%2C%20IL%2060612&t=m&z=16&output=embed&iwloc=near";
 
 export default function ContactUsPage() {
   return (
@@ -33,7 +33,7 @@ export default function ContactUsPage() {
                 <ContactInfoIcon name="map" />
                 <div className="contact-info-card-body">
                   <h5>Address</h5>
-                  <p>123 5th Ave, New York, NY 10021</p>
+                  <p>2045 W Grand Ave, Ste B, Chicago, IL 60612</p>
                 </div>
               </article>
 

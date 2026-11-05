@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  SITE_ADDRESS,
   SITE_BRAND_NAME,
   SITE_EMAIL,
   SITE_LOGO,
@@ -37,6 +38,7 @@ export function Footer() {
           <div className="footer-col">
             <h2>Contact Info</h2>
             <ul className="footer-list">
+              <li>{SITE_ADDRESS}</li>
               <li>
                 <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
               </li>
@@ -57,8 +59,8 @@ export function Footer() {
           <div className="footer-col">
             <h2>Our Service</h2>
             <p>
-              Your Hub for Clever Home Hacks: Simplify, Innovate, Thrive with
-              Home Hack Hub.
+              {SITE_BRAND_NAME} is not an insurer. We connect you with licensed
+              agents and carriers.
             </p>
           </div>
         </div>

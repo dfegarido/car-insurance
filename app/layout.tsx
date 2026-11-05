@@ -15,11 +15,11 @@ const mulish = Mulish({
 
 export const metadata: Metadata = {
   title: {
-    default: "My Ride Insured | Affordable Auto Insurance Online",
-    template: "%s – My Ride Insured",
+    default: "The Insurance Provider | Affordable Auto Insurance Online",
+    template: "%s – The Insurance Provider",
   },
   description:
-    "Save on car insurance — compare quotes from top providers with My Ride Insured.",
+    "Save on car insurance — compare quotes from top providers with The Insurance Provider.",
 };
 
 export default function RootLayout({

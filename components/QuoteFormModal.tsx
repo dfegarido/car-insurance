@@ -352,11 +352,11 @@ export function QuoteFormModal({ open, onClose, initialZip = "" }: Props) {
                     <Link href="/privacy-policy" onClick={(e) => e.stopPropagation()}>
                       Privacy Policy
                     </Link>{" "}
-                    of My Ride Insured and authorize their representatives to contact
+                    of The Insurance Provider and authorize their representatives to contact
                     me about auto insurance and other non-insurance offers via phone
                     calls and text messages to the number I have provided. I consent
                     to receive calls and prerecorded messages through an auto-dialed
-                    phone system from My Ride Insured, even if my number is listed on
+                    phone system from The Insurance Provider, even if my number is listed on
                     any state, federal, or corporate Do Not Call list. I understand
                     that my consent is not required to purchase any goods or services,
                     and I may revoke it at any time. Standard message and data rates

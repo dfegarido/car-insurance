@@ -14,6 +14,7 @@ const QUICK_LINKS = [
   { href: "/home-insurance", label: "Home Insurance" },
   { href: "/auto-insurance", label: "Auto Insurance" },
   { href: "/business-insurance", label: "Business Insurance" },
+  { href: "/about-us", label: "About Us" },
   { href: "/contact-us", label: "Contact Us" },
 ];
 
@@ -77,6 +78,10 @@ export function Footer() {
               <Link href="/privacy-policy">Privacy Policy</Link>
               <span className="footer-legal-sep"> | </span>
               <Link href="/terms-of-services">Terms of Services</Link>
+              <span className="footer-legal-sep"> | </span>
+              <Link href="/do-not-sell-or-share">
+                Do Not Sell or Share My Personal Information
+              </Link>
             </p>
           </div>
         </div>

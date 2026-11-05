@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  SITE_ADDRESS,
   SITE_BRAND_NAME,
   SITE_EMAIL,
   SITE_LOGO,
@@ -13,6 +14,7 @@ const QUICK_LINKS = [
   { href: "/home-insurance", label: "Home Insurance" },
   { href: "/auto-insurance", label: "Auto Insurance" },
   { href: "/business-insurance", label: "Business Insurance" },
+  { href: "/about-us", label: "About Us" },
   { href: "/contact-us", label: "Contact Us" },
 ];
 
@@ -37,6 +39,7 @@ export function Footer() {
           <div className="footer-col">
             <h2>Contact Info</h2>
             <ul className="footer-list">
+              <li>{SITE_ADDRESS}</li>
               <li>
                 <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
               </li>
@@ -57,8 +60,8 @@ export function Footer() {
           <div className="footer-col">
             <h2>Our Service</h2>
             <p>
-              Your Hub for Clever Home Hacks: Simplify, Innovate, Thrive with
-              Home Hack Hub.
+              {SITE_BRAND_NAME} is not an insurer. We connect you with licensed
+              agents and carriers.
             </p>
           </div>
         </div>
@@ -75,6 +78,10 @@ export function Footer() {
               <Link href="/privacy-policy">Privacy Policy</Link>
               <span className="footer-legal-sep"> | </span>
               <Link href="/terms-of-services">Terms of Services</Link>
+              <span className="footer-legal-sep"> | </span>
+              <Link href="/do-not-sell-or-share">
+                Do Not Sell or Share My Personal Information
+              </Link>
             </p>
           </div>
         </div>

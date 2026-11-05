@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ADDRESS, SITE_BRAND_NAME, SITE_EMAIL, SITE_GOVERNING_STATE, SITE_LEGAL_ENTITY } from "@/lib/site";
 import "../legal.css";
 
 export const metadata: Metadata = {
@@ -14,10 +15,17 @@ export default function TermsPage() {
           <strong>Effective Date:</strong> June 5, 2024
         </p>
         <p>
-          Welcome to homehackhub.com (the &ldquo;Website&rdquo;). By accessing or
+          Welcome to {SITE_BRAND_NAME} (the &ldquo;Website&rdquo;), operated by {SITE_LEGAL_ENTITY}. By accessing or
           using our Website, you agree to comply with and be bound by the
           following Terms of Service (the &ldquo;Terms&rdquo;). Please read these
           Terms carefully before using the Website.
+        </p>
+
+        <h2>Not an Insurer</h2>
+        <p>
+          {SITE_BRAND_NAME} is not an insurer. We connect consumers with
+          licensed agents and carriers and do not issue insurance policies or
+          make coverage decisions.
         </p>
 
         <h2>1. Acceptance of Terms</h2>
@@ -72,7 +80,7 @@ export default function TermsPage() {
         <h2>5. Intellectual Property</h2>
         <p>
           All content on the Website, including text, graphics, logos, and software,
-          is the property of homehackhub.com or its content suppliers and protected
+          is the property of {SITE_LEGAL_ENTITY} or its content suppliers and protected
           by intellectual property laws. You may not use any content from the
           Website without our express written permission.
         </p>
@@ -87,14 +95,14 @@ export default function TermsPage() {
 
         <h2>7. Limitation of Liability</h2>
         <p>
-          To the fullest extent permitted by law, homehackhub.com shall not be
+          To the fullest extent permitted by law, {SITE_LEGAL_ENTITY} shall not be
           liable for any indirect, incidental, special, or consequential damages
           arising out of or in connection with your use of the Website.
         </p>
 
         <h2>8. Indemnification</h2>
         <p>
-          You agree to indemnify and hold harmless homehackhub.com, its affiliates,
+          You agree to indemnify and hold harmless {SITE_LEGAL_ENTITY}, its affiliates,
           and its employees from any claims, damages, losses, or expenses arising
           out of your use of the Website or your violation of these Terms.
         </p>
@@ -102,14 +110,14 @@ export default function TermsPage() {
         <h2>9. Governing Law</h2>
         <p>
           These Terms shall be governed by and construed in accordance with the
-          laws of [Your State/Country], without regard to its conflict of law
+          laws of {SITE_GOVERNING_STATE}, without regard to its conflict of law
           principles.
         </p>
 
         <h2>10. Contact Information</h2>
         <p>
           If you have any questions about these Terms, please contact us at:{" "}
-          <a href="mailto:[email protected]">[email protected]</a>
+          <a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>, or by mail at {SITE_ADDRESS}.
         </p>
       </div>
     </div>

@@ -72,7 +72,7 @@ export default function HomePage() {
               <div className="hero-content">
                 <h1>Save on Car Insurance — Get the Best Rates</h1>
                 <p>
-                  My Ride Insured helps you compare top providers instantly,
+                  The Insurance Provider helps you compare top providers instantly,
                   <br />
                   so you can find affordable coverage and make smart choices
                   <br />
@@ -173,12 +173,12 @@ export default function HomePage() {
       <section className="why-section">
         <div className="container why-inner">
           <div className="why-content">
-            <h2 className="section-title">Why Choose My Ride Insured?</h2>
+            <h2 className="section-title">Why Choose The Insurance Provider?</h2>
             <p>
               We get it—there are plenty of resources out there about insurance,
               but we like to do things differently. Our goal is to help you save
               on coverage that fits your life. Here&apos;s why thousands trust
-              My Ride Insured:
+              The Insurance Provider:
             </p>
             <ul>
               <li>

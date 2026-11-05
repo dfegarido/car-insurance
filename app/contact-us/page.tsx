@@ -65,20 +65,6 @@ export default function ContactUsPage() {
                   </div>
                 </article>
               </div>
-
-              <article className="contact-info-card contact-info-card--emergency">
-                <ContactInfoIcon name="phone" />
-                <div className="contact-info-card-body">
-                  <h5>
-                    <a href="tel:+18033693440">
-                      Emergency Roofing Service 24/7
-                    </a>
-                  </h5>
-                  <p>
-                    <a href="tel:+18033693440">+1 803 369 3440</a>
-                  </p>
-                </div>
-              </article>
             </div>
           </div>
 

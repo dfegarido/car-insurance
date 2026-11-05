@@ -6,7 +6,7 @@ import { ZipQuoteForm } from "@/components/ZipQuoteForm";
 export const metadata: Metadata = {
   title: "Auto Insurance | Save on Car Insurance",
   description:
-    "Save on car insurance — get the best rates. Compare quotes from top providers with My Ride Insured.",
+    "Save on car insurance — get the best rates. Compare quotes from top providers with The Insurance Provider.",
 };
 
 const STEPS = [
@@ -107,7 +107,7 @@ const PAIN_MOSAIC = [
 const TESTIMONIALS = [
   {
     quote:
-      "I was overpaying for years until I found My Ride Insured In minutes I compared quotes and saved hundreds The process was simple fast and stress free. Highly recommend",
+      "I was overpaying for years until I found The Insurance Provider In minutes I compared quotes and saved hundreds The process was simple fast and stress free. Highly recommend",
     name: "Luis Moreno",
     avatar: "/images/mri/Group-11-1.jpg",
   },
@@ -163,7 +163,7 @@ export default function AutoInsurancePage() {
         <div className="mri-wrap mri-benefits-layout">
           <div className="mri-benefits-aside">
             <h4 className="mri-eyebrow">Our Benefits</h4>
-            <h2>Why Choose My Ride Insured?</h2>
+            <h2>Why Choose The Insurance Provider?</h2>
             <StartSavingCTA />
           </div>
           <div className="mri-benefits-grid">
@@ -249,6 +249,12 @@ export default function AutoInsurancePage() {
             placeholder="Enter your ZIP code"
             buttonText="Compare Now"
           />
+          <p>
+            <small>
+              The Insurance Provider is not an insurer. We connect you with
+              licensed agents and carriers.
+            </small>
+          </p>
         </div>
       </section>
 

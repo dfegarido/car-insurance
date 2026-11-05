@@ -86,15 +86,15 @@ export default function ContactUsPage() {
       <section className="estimate-section">
         <div className="container estimate-inner">
           <div className="estimate-copy">
-            <h2>Need A Free Estimate?</h2>
+            <h2>Need a Free Quote?</h2>
             <p>
-              Rutrum ut volutpat scelerisque auctor ultrices lectus ultrices
-              ullamcorper massa diam etiam amet a, nulla pulvinar sapien.
+              Call us and a licensed agent can help you compare insurance
+              options.
             </p>
           </div>
           <div className="estimate-actions">
             <a href="tel:+18033693440" className="btn btn-estimate-primary">
-              Get a Free Estimate
+              Get a Free Quote
             </a>
             <a href="tel:+18033693440" className="btn btn-estimate-outline">
               Call Us Now

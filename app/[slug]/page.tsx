@@ -16,6 +16,7 @@ const RESERVED_SLUGS = new Set([
   "business-insurance",
   "contact-us",
   "about-us",
+  "unsubscribe",
   "do-not-sell-or-share",
   "privacy-policy",
   "terms-of-services",

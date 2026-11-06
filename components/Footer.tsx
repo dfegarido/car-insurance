@@ -79,6 +79,8 @@ export function Footer() {
               <span className="footer-legal-sep"> | </span>
               <Link href="/terms-of-services">Terms of Services</Link>
               <span className="footer-legal-sep"> | </span>
+              <Link href="/unsubscribe">Unsubscribe</Link>
+              <span className="footer-legal-sep"> | </span>
               <Link href="/do-not-sell-or-share">
                 Do Not Sell or Share My Personal Information
               </Link>

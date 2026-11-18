@@ -1,0 +1,47 @@
+name: Deploy to EC2
+
+# Every push to master goes live on web-shared-1 as web@insurance (port 3002, behind Caddy).
+# Runtime env lives on the server in /srv/insurance/.env; this job ships code only.
+# EC2_DEPLOY_KEY can only run /usr/local/bin/deploy-node for this site (forced command on the server),
+# which restarts the app, checks it answers, and rolls back if it does not.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ec2
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Package standalone release
+        run: |
+          cp -r .next/static .next/standalone/.next/static
+          if [ -d public ]; then cp -r public .next/standalone/public; fi
+          tar -czf release.tgz --exclude='./.env*' -C .next/standalone .
+
+      - name: Ship to web-shared-1
+        env:
+          SSH_KEY: ${{ secrets.EC2_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Pinned server host key (public), so the first connection is not trusted blindly.
+          echo "35.170.140.138 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMitzL4VMxxCy1L/DoEnt4CGtRcX7j/UdaWI/Cdvlyf2" >> ~/.ssh/known_hosts
+          ssh deploy@35.170.140.138 "$GITHUB_SHA" < release.tgz
